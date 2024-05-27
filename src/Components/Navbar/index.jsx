@@ -65,9 +65,13 @@ const Navbar = () => {
             Shopi
           </NavLink>
         </div>
-        <button className="lg:hidden text-xl" onClick={toggleMenu}>
-          <LuAlignJustify />
-        </button>
+
+        <div className="flex gap-3 items-center">
+          <button className="lg:hidden text-xl" onClick={toggleMenu}>
+            <LuAlignJustify />
+          </button>
+          <div>🛒0</div>
+        </div>
       </div>
       <div
         ref={menuRef}
