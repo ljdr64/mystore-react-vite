@@ -1,5 +1,7 @@
+import Layout from '../../Components/Layout';
+
 function MyAccount() {
-  return <div className="bg-sky-500/100">MyAccount</div>;
+  return <Layout>MyAccount</Layout>;
 }
 
 export default MyAccount;

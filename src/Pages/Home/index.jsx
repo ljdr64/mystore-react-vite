@@ -1,5 +1,7 @@
+import Layout from '../../Components/Layout';
+
 function Home() {
-  return <div className="bg-sky-500/100">Home</div>;
+  return <Layout>Home</Layout>;
 }
 
 export default Home;
