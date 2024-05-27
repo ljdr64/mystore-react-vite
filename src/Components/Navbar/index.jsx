@@ -25,6 +25,10 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   const handleClickOutside = (event) => {
     if (menuRef.current && !menuRef.current.contains(event.target)) {
       setIsMenuOpen(false);
@@ -85,7 +89,9 @@ const Navbar = () => {
           </li>
           {Links.map((link) => (
             <li className="lg:m-0 mt-5 mb-5 ml-2" key={link.name}>
-              <NavLink to={link.link}>{link.name}</NavLink>
+              <NavLink to={link.link} onClick={closeMenu}>
+                {link.name}
+              </NavLink>
             </li>
           ))}
         </ul>
@@ -93,7 +99,9 @@ const Navbar = () => {
           <li className="lg:m-0 mt-5 mb-5 ml-2">{email}</li>
           {User.map((link) => (
             <li className="lg:m-0 mt-5 mb-5 ml-2" key={link.name}>
-              <NavLink to={link.link}>{link.name}</NavLink>
+              <NavLink to={link.link} onClick={closeMenu}>
+                {link.name}
+              </NavLink>
             </li>
           ))}
           {!isMenuOpen && <li className="lg:m-0 mt-5 mb-5 ml-2">🛒0</li>}
