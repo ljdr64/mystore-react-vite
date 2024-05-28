@@ -1,9 +1,13 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FcShop } from 'react-icons/fc';
 import { LuAlignJustify } from 'react-icons/lu';
+import { FaShoppingCart } from 'react-icons/fa';
+import { ShoppingCartContext } from '../Context';
 
 const Navbar = () => {
+  const context = useContext(ShoppingCartContext);
+
   const Links = [
     { name: 'All', link: '/' },
     { name: 'Clothes', link: '/clothes' },
@@ -71,7 +75,10 @@ const Navbar = () => {
           <button className="lg:hidden text-xl" onClick={toggleMenu}>
             <LuAlignJustify />
           </button>
-          <div>🛒0</div>
+          <div className="flex gap-2 items-center text-lg">
+            <FaShoppingCart />
+            {context.count}
+          </div>
         </div>
       </div>
       <div
@@ -109,7 +116,12 @@ const Navbar = () => {
               </NavLink>
             </li>
           ))}
-          {!isMenuOpen && <li className="lg:m-0 mt-5 mb-5 ml-2">🛒0</li>}
+          {!isMenuOpen && (
+            <li className="flex gap-2 items-center text-lg lg:m-0 mt-5 mb-5 ml-2">
+              <FaShoppingCart />
+              {context.count}
+            </li>
+          )}
         </ul>
       </div>
     </nav>
