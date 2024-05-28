@@ -5,6 +5,7 @@ import { LuAlignJustify } from 'react-icons/lu';
 
 const Navbar = () => {
   const Links = [
+    { name: 'All', link: '/' },
     { name: 'Clothes', link: '/clothes' },
     { name: 'Electronics', link: '/electronics' },
     { name: 'Furnitures', link: '/furnitures' },
