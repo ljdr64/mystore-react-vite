@@ -8,6 +8,7 @@ import './style.css';
 
 const Navbar = () => {
   const context = useContext(ShoppingCartContext);
+  const activeStyle = 'underline underline-offset-4';
 
   const Links = [
     { name: 'All', link: '/' },
@@ -102,7 +103,13 @@ const Navbar = () => {
           </li>
           {Links.map((link) => (
             <li className="lg:m-0 mt-5 mb-5 ml-2" key={link.name}>
-              <NavLink to={link.link} onClick={closeMenu}>
+              <NavLink
+                to={link.link}
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  isActive ? activeStyle : undefined
+                }
+              >
                 {link.name}
               </NavLink>
             </li>
@@ -112,7 +119,13 @@ const Navbar = () => {
           <li className="lg:m-0 mt-5 mb-5 ml-2">{email}</li>
           {User.map((link) => (
             <li className="lg:m-0 mt-5 mb-5 ml-2" key={link.name}>
-              <NavLink to={link.link} onClick={closeMenu}>
+              <NavLink
+                to={link.link}
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  isActive ? activeStyle : undefined
+                }
+              >
                 {link.name}
               </NavLink>
             </li>
