@@ -4,6 +4,7 @@ import { FcShop } from 'react-icons/fc';
 import { LuAlignJustify } from 'react-icons/lu';
 import { FaShoppingCart } from 'react-icons/fa';
 import { ShoppingCartContext } from '../Context';
+import './style.css';
 
 const Navbar = () => {
   const context = useContext(ShoppingCartContext);
@@ -84,7 +85,7 @@ const Navbar = () => {
       <div
         ref={menuRef}
         className={`flex lg:flex lg:justify-between lg:items-center gap-10 fixed lg:static bg-white lg:bg-transparent w-full shadow-md lg:shadow-none ${
-          isMenuOpen ? 'top-12 left-0 pl-8' : 'hidden'
+          isMenuOpen ? 'menu-open left-0 pl-8' : 'hidden'
         }`}
       >
         <ul className="flex flex-col lg:flex-row lg:gap-10 lg:items-center">
