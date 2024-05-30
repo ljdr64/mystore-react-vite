@@ -5,7 +5,6 @@ import { FaTimes } from 'react-icons/fa';
 
 const ProductDetail = () => {
   const context = useContext(ShoppingCartContext);
-  console.log('Product to show: ', context.productToShow);
 
   return (
     <aside
@@ -34,10 +33,10 @@ const ProductDetail = () => {
           ${context.productToShow.price}
         </span>
         <span className="font-medium text-md">
-          ${context.productToShow.title}
+          {context.productToShow.title}
         </span>
         <span className="font-light text-sm">
-          ${context.productToShow.description}
+          {context.productToShow.description}
         </span>
       </p>
     </aside>
