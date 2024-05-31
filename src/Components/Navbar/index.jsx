@@ -4,7 +4,7 @@ import { FcShop } from 'react-icons/fc';
 import { LuAlignJustify } from 'react-icons/lu';
 import { FaShoppingCart } from 'react-icons/fa';
 import { ShoppingCartContext } from '../Context';
-import './style.css';
+import './styles.css';
 
 const Navbar = () => {
   const context = useContext(ShoppingCartContext);

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ShoppingCartContext } from '../Context';
-import './style.css';
+import './styles.css';
 import { FaTimes } from 'react-icons/fa';
 
 const ProductDetail = () => {

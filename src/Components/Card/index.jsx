@@ -8,11 +8,15 @@ const Card = (data) => {
   const showProduct = (productDetail) => {
     context.openProductDetail();
     context.setProductToShow(productDetail);
+    context.closeCheckoutSideMenu();
   };
 
-  const addProductsToCart = (productData) => {
+  const addProductsToCart = (event, productData) => {
+    event.stopPropagation();
     context.setCount(context.count + 1);
     context.setCartProducts([...context.cartProducts, productData]);
+    context.openCheckoutSideMenu();
+    context.closeProductDetail();
     console.log('CART: ', context.cartProducts);
   };
 
@@ -32,10 +36,7 @@ const Card = (data) => {
         />
         <div
           className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
-          onClick={(e) => {
-            e.stopPropagation();
-            addProductsToCart(data?.data);
-          }}
+          onClick={(event) => addProductsToCart(event, data?.data)}
         >
           <FaPlus />
         </div>
