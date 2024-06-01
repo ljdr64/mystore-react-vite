@@ -1,7 +1,8 @@
 import { useContext } from 'react';
-import { ShoppingCartContext } from '../Context';
-import './styles.css';
 import { FaTimes } from 'react-icons/fa';
+import { ShoppingCartContext } from '../Context';
+import OrderCard from '../../Components/OrderCard';
+import './styles.css';
 
 const ProductDetail = () => {
   const context = useContext(ShoppingCartContext);
@@ -20,6 +21,16 @@ const ProductDetail = () => {
         >
           <FaTimes />
         </div>
+      </div>
+      <div className="px-6">
+        {context.cartProducts.map((product) => (
+          <OrderCard
+            key={product.id}
+            title={product.title}
+            imageURL={product.image}
+            price={product.price}
+          />
+        ))}
       </div>
     </aside>
   );
