@@ -7,6 +7,14 @@ import './styles.css';
 const ProductDetail = () => {
   const context = useContext(ShoppingCartContext);
 
+  const handleDelete = (id, quantity) => {
+    const filteredProducts = context.cartProducts.filter(
+      (product) => product.product.id !== id
+    );
+    context.setCartProducts(filteredProducts);
+    context.setCount(context.count - quantity);
+  };
+
   return (
     <aside
       className={`${
@@ -26,10 +34,12 @@ const ProductDetail = () => {
         {context.cartProducts.map((product) => (
           <OrderCard
             key={product.product.id}
+            id={product.product.id}
             quantity={product.quantity}
             title={product.product.title}
             imageURL={product.product.image}
             price={product.product.price}
+            handleDelete={handleDelete}
           />
         ))}
       </div>

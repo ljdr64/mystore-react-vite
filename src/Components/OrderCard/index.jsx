@@ -1,7 +1,7 @@
 import { FaTrashAlt } from 'react-icons/fa';
 
 const OrderCard = (props) => {
-  const { quantity, title, imageURL, price } = props;
+  const { id, quantity, title, imageURL, price, handleDelete } = props;
 
   return (
     <div className="flex justify-between items-center mb-3 gap-2">
@@ -20,7 +20,10 @@ const OrderCard = (props) => {
         <p className="text-lg font-medium">
           {parseFloat((price * quantity).toFixed(2))}
         </p>
-        <FaTrashAlt />
+        <FaTrashAlt
+          className="cursor-pointer"
+          onClick={() => handleDelete(id, quantity)}
+        />
       </div>
     </div>
   );
