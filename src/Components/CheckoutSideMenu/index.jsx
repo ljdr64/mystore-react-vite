@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { ShoppingCartContext } from '../Context';
 import OrderCard from '../../Components/OrderCard';
+import { totalPrice } from '../../utils';
 import './styles.css';
 
 const ProductDetail = () => {
@@ -42,6 +43,14 @@ const ProductDetail = () => {
             handleDelete={handleDelete}
           />
         ))}
+      </div>
+      <div className="px-6">
+        <p className="flex justify-between items-center">
+          <span className="font-normal">Total:</span>
+          <span className="font-medium">
+            ${totalPrice(context.cartProducts)}
+          </span>
+        </p>
       </div>
     </aside>
   );
