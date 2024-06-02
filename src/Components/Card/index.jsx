@@ -46,7 +46,6 @@ const Card = (data) => {
     }
     context.openCheckoutSideMenu();
     context.closeProductDetail();
-    console.log('CART: ', context.cartProducts);
   };
 
   return (
