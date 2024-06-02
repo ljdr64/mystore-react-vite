@@ -14,7 +14,36 @@ const Card = (data) => {
   const addProductsToCart = (event, productData) => {
     event.stopPropagation();
     context.setCount(context.count + 1);
-    context.setCartProducts([...context.cartProducts, productData]);
+
+    const existingProduct = context.cartProducts?.find(
+      (product) => product.product.id === productData.id
+    );
+
+    if (!existingProduct) {
+      context.setCartProducts([
+        ...context.cartProducts,
+        { product: productData, quantity: 1 },
+      ]);
+    } else {
+      const productIndex = context.cartProducts.findIndex(
+        (product) => product.product.id === productData.id
+      );
+
+      if (productIndex !== -1) {
+        const updatedProduct = {
+          ...context.cartProducts[productIndex],
+          quantity: context.cartProducts[productIndex].quantity + 1,
+        };
+
+        const updatedCart = [
+          ...context.cartProducts.slice(0, productIndex),
+          updatedProduct,
+          ...context.cartProducts.slice(productIndex + 1),
+        ];
+
+        context.setCartProducts(updatedCart);
+      }
+    }
     context.openCheckoutSideMenu();
     context.closeProductDetail();
     console.log('CART: ', context.cartProducts);
@@ -26,13 +55,13 @@ const Card = (data) => {
       onClick={() => showProduct(data?.data)}
     >
       <figure className="relative mb-2 w-full h-52">
-        <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-sm m-2 px-3 py-0.5">
+        <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-sm capitalize m-2 px-3 py-0.5">
           {data.data?.category}
         </span>
         <img
           className="w-full h-full object-contain rounded-lg"
           src={data.data?.image}
-          alt="headphones"
+          alt={data.data?.title}
         />
         <div
           className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"

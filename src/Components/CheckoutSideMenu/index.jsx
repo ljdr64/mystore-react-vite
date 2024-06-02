@@ -22,13 +22,14 @@ const ProductDetail = () => {
           <FaTimes />
         </div>
       </div>
-      <div className="px-6">
+      <div className="px-6 overflow-y-scroll">
         {context.cartProducts.map((product) => (
           <OrderCard
-            key={product.id}
-            title={product.title}
-            imageURL={product.image}
-            price={product.price}
+            key={product.product.id}
+            quantity={product.quantity}
+            title={product.product.title}
+            imageURL={product.product.image}
+            price={product.product.price}
           />
         ))}
       </div>
