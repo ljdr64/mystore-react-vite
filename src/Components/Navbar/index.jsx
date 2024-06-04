@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { FcShop } from 'react-icons/fc';
 import { LuAlignJustify } from 'react-icons/lu';
 import { FaShoppingCart } from 'react-icons/fa';
-import { ShoppingCartContext } from '../Context';
+import { ShoppingCartContext } from '../../Context';
 import './styles.css';
 
 const Navbar = () => {

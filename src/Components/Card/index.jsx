@@ -1,6 +1,6 @@
 import { FaPlus } from 'react-icons/fa';
 import { useContext } from 'react';
-import { ShoppingCartContext } from '../Context';
+import { ShoppingCartContext } from '../../Context';
 
 const Card = (data) => {
   const context = useContext(ShoppingCartContext);

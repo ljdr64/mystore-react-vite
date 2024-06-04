@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ShoppingCartContext } from '../Context';
+import { ShoppingCartContext } from '../../Context';
 import './styles.css';
 import { FaTimes } from 'react-icons/fa';
 

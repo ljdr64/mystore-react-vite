@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { ShoppingCartContext } from '../Context';
+import { ShoppingCartContext } from '../../Context';
 import OrderCard from '../../Components/OrderCard';
 import { totalPrice } from '../../utils';
 import './styles.css';
