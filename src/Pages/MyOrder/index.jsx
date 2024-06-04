@@ -33,7 +33,7 @@ function MyOrder() {
             />
           ))}
         </div>
-        <div className="flex justify-between items-center w-80">
+        <div className="flex justify-between items-center w-80 text-lg">
           <span className="font-normal">Total:</span>
           <span className="font-medium">
             ${totalPrice(context.order?.[index]?.products)}
