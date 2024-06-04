@@ -14,8 +14,7 @@ const Navbar = () => {
     { name: 'All', link: '/' },
     { name: 'Clothes', link: '/clothes' },
     { name: 'Electronics', link: '/electronics' },
-    { name: 'Furnitures', link: '/furnitures' },
-    { name: 'Toys', link: '/toys' },
+    { name: 'Jewelery', link: '/jewelery' },
     { name: 'Others', link: '/others' },
   ];
   const User = [
