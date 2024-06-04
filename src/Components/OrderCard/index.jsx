@@ -20,10 +20,12 @@ const OrderCard = (props) => {
         <p className="text-lg font-medium">
           {parseFloat((price * quantity).toFixed(2))}
         </p>
-        <FaTrashAlt
-          className="cursor-pointer"
-          onClick={() => handleDelete(id, quantity)}
-        />
+        {handleDelete && (
+          <FaTrashAlt
+            className="cursor-pointer"
+            onClick={() => handleDelete(id, quantity)}
+          />
+        )}
       </div>
     </div>
   );

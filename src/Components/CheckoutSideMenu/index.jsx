@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { FaTimes } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { ShoppingCartContext } from '../Context';
 import OrderCard from '../../Components/OrderCard';
 import { totalPrice } from '../../utils';
@@ -33,7 +34,7 @@ const ProductDetail = () => {
     <aside
       className={`${
         context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'
-      } checkout-side-menu flex flex-col fixed right-0 shadow-md rounded-lg bg-white`}
+      } checkout-side-menu flex flex-col fixed right-0 border-2 border-gray-200 shadow-2xl rounded-lg bg-white z-20`}
     >
       <div className="flex justify-between items-center p-6">
         <h2 className="font-medium text-xl">My Order</h2>
@@ -64,12 +65,14 @@ const ProductDetail = () => {
             ${totalPrice(context.cartProducts)}
           </span>
         </p>
-        <button
-          className="bg-black py-2 text-white rounded-lg w-full"
-          onClick={() => handleCheckout()}
-        >
-          Checkout
-        </button>
+        <Link to="/my-orders/last">
+          <button
+            className="bg-black py-2 text-white rounded-lg w-full"
+            onClick={() => handleCheckout()}
+          >
+            Checkout
+          </button>
+        </Link>
       </div>
     </aside>
   );

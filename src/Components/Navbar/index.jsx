@@ -19,6 +19,7 @@ const Navbar = () => {
     { name: 'Others', link: '/others' },
   ];
   const User = [
+    { name: 'MyOrders', link: '/my-orders' },
     { name: 'MyAccount', link: '/my-account' },
     { name: 'SignIn', link: '/sign-in' },
   ];
@@ -64,7 +65,11 @@ const Navbar = () => {
   }, [isMenuOpen]);
 
   return (
-    <nav className="flex items-center fixed z-10 top-0 w-full min-w-72 py-2 px-8 text-sm font-light bg-white shadow-md">
+    <nav
+      className={`flex items-center fixed z-10 top-0 w-full min-w-72 py-2 px-8 text-sm font-light bg-white shadow-md ${
+        isMenuOpen && 'z-30'
+      }`}
+    >
       <div className="lg:hidden justify-between flex items-center w-full lg:w-auto">
         <div className="flex items-center">
           <FcShop size={30} />
@@ -89,7 +94,7 @@ const Navbar = () => {
           isMenuOpen ? 'menu-open left-0 pl-8' : 'hidden'
         }`}
       >
-        <ul className="flex flex-col lg:flex-row lg:gap-10 lg:items-center">
+        <ul className="flex flex-col lg:flex-row lg:gap-8 lg:items-center">
           <li className="hidden lg:flex items-center w-full lg:w-auto">
             <div className="flex items-center">
               <FcShop size={30} />
@@ -115,7 +120,7 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-        <ul className="flex flex-col lg:flex-row lg:gap-10 lg:items-center">
+        <ul className="flex flex-col lg:flex-row lg:gap-8 lg:items-center">
           <li className="lg:m-0 mt-5 mb-5 ml-2">{email}</li>
           {User.map((link) => (
             <li className="lg:m-0 mt-5 mb-5 ml-2" key={link.name}>
