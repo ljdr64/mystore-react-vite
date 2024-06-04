@@ -1,14 +1,63 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { ShoppingCartContext } from '../../Context';
 import Layout from '../../Components/Layout';
 import Card from '../../Components/Card';
 import ProductDetail from '../../Components/ProductDetail';
-import { ShoppingCartContext } from '../../Context';
 
 function Home() {
   const context = useContext(ShoppingCartContext);
+  const [categoryItems, setCategoryItems] = useState(null);
+
+  const location = useLocation();
+  const currentPath = location.pathname;
+  const currentCategory = currentPath.substring(
+    currentPath.lastIndexOf('/') + 1
+  );
+
+  const filteredItemsByCategory = (items) => {
+    if (currentCategory === 'clothes') {
+      return items?.filter((item) =>
+        item.category.toLowerCase().includes('clothing')
+      );
+    } else {
+      if (currentCategory === 'others') {
+        return items;
+      } else {
+        return items?.filter(
+          (item) =>
+            item.category.toLowerCase() === currentCategory.toLowerCase()
+        );
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (context.searchByTitle?.length > 0) {
+      if (context.filteredItems?.length > 0) {
+        setCategoryItems(filteredItemsByCategory(context.filteredItems));
+      } else {
+        setCategoryItems(null);
+      }
+    } else {
+      setCategoryItems(filteredItemsByCategory(context.items));
+    }
+  }, [
+    context.items,
+    context.searchByTitle,
+    context.filteredItems,
+    currentCategory,
+  ]);
 
   const renderView = () => {
-    if (context.searchByTitle?.length > 0) {
+    if (categoryItems?.length > 0) {
+      return categoryItems?.map((item) => <Card key={item.id} data={item} />);
+    } else if (
+      currentCategory.length > 0 &&
+      context.searchByTitle?.length > 0
+    ) {
+      return <div>We don't have anything :(</div>;
+    } else if (context.searchByTitle?.length > 0) {
       if (context.filteredItems?.length > 0) {
         return context.filteredItems?.map((item) => (
           <Card key={item.id} data={item} />
