@@ -81,7 +81,7 @@ function Home() {
         className="rounded-lg border-2 border-black w-80 p-4 mb-4 shadow-md focus:outline-none"
         onChange={(event) => context.setSearchByTitle(event.target.value)}
       />
-      <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 mb-4">
         {renderView()}
       </div>
       <ProductDetail />

@@ -65,7 +65,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`flex items-center fixed z-10 top-0 w-full min-w-72 py-2 px-8 text-sm font-light bg-white shadow-md ${
+      className={`flex items-center fixed z-10 top-0 w-full min-w-[360px] py-2 px-8 text-sm font-light bg-white shadow-md ${
         isMenuOpen && 'z-30'
       }`}
     >

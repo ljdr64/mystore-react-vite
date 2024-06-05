@@ -10,7 +10,7 @@ const ProductDetail = () => {
     <aside
       className={`${
         context.isProductDetailOpen ? 'flex' : 'hidden'
-      } product-detail flex flex-col fixed right-0 border-2 border-gray-200 shadow-2xl rounded-lg bg-white z-20`}
+      } product-detail flex flex-col fixed right-0 border-2 border-gray-200 shadow-2xl rounded-lg bg-white z-20 min-w-[360px]`}
     >
       <div className="flex justify-between items-center p-6">
         <h2 className="font-medium text-xl">Detail</h2>
