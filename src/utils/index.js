@@ -14,3 +14,13 @@ export const totalPrice = (products) => {
   );
   return total;
 };
+
+/**
+ * This function calculates total products of a new order
+ * @param {Array} products cartProduct: Array of Objects
+ * @returns {number} Total products
+ */
+export const totalProducts = (products) => {
+  const total = products.reduce((sum, product) => sum + product.quantity, 0);
+  return total;
+};

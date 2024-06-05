@@ -3,7 +3,7 @@ import { FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { ShoppingCartContext } from '../../Context';
 import OrderCard from '../../Components/OrderCard';
-import { totalPrice } from '../../utils';
+import { totalPrice, totalProducts } from '../../utils';
 import './styles.css';
 
 const ProductDetail = () => {
@@ -38,7 +38,7 @@ const ProductDetail = () => {
     const orderToAdd = {
       date: date.toLocaleDateString(),
       products: context.cartProducts,
-      totalProducts: context.cartProducts.length,
+      totalProducts: totalProducts(context.cartProducts),
       totalPrice: totalPrice(context.cartProducts),
     };
 

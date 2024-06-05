@@ -11,11 +11,11 @@ const OrdersCard = (props) => {
     <div className="flex justify-between items-center w-80 mb-3 p-4 border-2 border-gray-200 shadow-md rounded-lg border border-black gap-2">
       <div className="flex justify-between w-full">
         <p className="flex flex-col">
-          <span className="flex justify-center items-center gap-3">
+          <span className="flex items-center gap-3">
             <FaRegCalendarAlt />
             {date}
           </span>
-          <span className="flex justify-center items-center gap-3">
+          <span className="flex items-center gap-3">
             <FaShoppingBag />
             {totalProducts} articles
           </span>
