@@ -81,7 +81,10 @@ const Navbar = () => {
           <button className="lg:hidden text-xl" onClick={toggleMenu}>
             <LuAlignJustify />
           </button>
-          <div className="flex gap-2 items-center text-lg">
+          <div
+            className="flex gap-2 items-center text-lg cursor-pointer select-none"
+            onClick={() => context.openCheckoutSideMenu()}
+          >
             <FaShoppingCart />
             {context.count}
           </div>
@@ -135,7 +138,10 @@ const Navbar = () => {
             </li>
           ))}
           {!isMenuOpen && (
-            <li className="flex gap-2 items-center text-lg lg:m-0 mt-5 mb-5 ml-2">
+            <li
+              className="flex gap-2 items-center text-lg lg:m-0 mt-5 mb-5 ml-2 cursor-pointer select-none"
+              onClick={() => context.openCheckoutSideMenu()}
+            >
               <FaShoppingCart />
               {context.count}
             </li>

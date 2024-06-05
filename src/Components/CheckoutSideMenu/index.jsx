@@ -69,7 +69,10 @@ const ProductDetail = () => {
         <Link to="/my-orders/last">
           <button
             className="bg-black py-2 text-white rounded-lg w-full"
-            onClick={() => handleCheckout()}
+            onClick={
+              !(totalPrice(context.cartProducts) === 0) &&
+              (() => handleCheckout())
+            }
           >
             Checkout
           </button>

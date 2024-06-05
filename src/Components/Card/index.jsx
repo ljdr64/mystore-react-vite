@@ -58,7 +58,7 @@ const Card = (data) => {
           {data.data?.category}
         </span>
         <img
-          className="w-full h-full object-contain rounded-lg"
+          className="w-full h-full object-contain rounded-lg select-none"
           src={data.data?.image}
           alt={data.data?.title}
         />
