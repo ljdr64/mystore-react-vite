@@ -13,7 +13,6 @@ const Card = (data) => {
 
   const addProductsToCart = (event, productData) => {
     event.stopPropagation();
-    context.setCount(context.count + 1);
 
     const existingProduct = context.cartProducts?.find(
       (product) => product.product.id === productData.id
@@ -24,12 +23,16 @@ const Card = (data) => {
         ...context.cartProducts,
         { product: productData, quantity: 1 },
       ]);
+      context.setCount(context.count + 1);
     } else {
       const productIndex = context.cartProducts.findIndex(
         (product) => product.product.id === productData.id
       );
 
-      if (productIndex !== -1) {
+      if (
+        productIndex !== -1 &&
+        context.cartProducts[productIndex].quantity < 10
+      ) {
         const updatedProduct = {
           ...context.cartProducts[productIndex],
           quantity: context.cartProducts[productIndex].quantity + 1,
@@ -41,6 +44,7 @@ const Card = (data) => {
           ...context.cartProducts.slice(productIndex + 1),
         ];
 
+        context.setCount(context.count + 1);
         context.setCartProducts(updatedCart);
       }
     }

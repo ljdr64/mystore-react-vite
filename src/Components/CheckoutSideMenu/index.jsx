@@ -17,6 +17,22 @@ const ProductDetail = () => {
     context.setCount(context.count - quantity);
   };
 
+  const handleQuantity = (id, quantity) => {
+    let updatedCartProducts = [...context.cartProducts];
+    const index = updatedCartProducts.findIndex(
+      (product) => product.product.id === id
+    );
+
+    if (index !== -1) {
+      updatedCartProducts[index].quantity += quantity;
+      if (updatedCartProducts[index].quantity <= 0) {
+        updatedCartProducts.splice(index, 1);
+      }
+      context.setCartProducts(updatedCartProducts);
+      context.setCount(context.count + quantity);
+    }
+  };
+
   const handleCheckout = () => {
     const date = new Date();
     const orderToAdd = {
@@ -56,6 +72,7 @@ const ProductDetail = () => {
             imageURL={product.product.image}
             price={product.product.price}
             handleDelete={handleDelete}
+            handleQuantity={handleQuantity}
           />
         ))}
       </div>
@@ -69,10 +86,11 @@ const ProductDetail = () => {
         <Link to="/my-orders/last">
           <button
             className="bg-black py-2 text-white rounded-lg w-full"
-            onClick={
-              !(totalPrice(context.cartProducts) === 0) &&
-              (() => handleCheckout())
-            }
+            onClick={() => {
+              if (totalPrice(context.cartProducts) > 0) {
+                handleCheckout();
+              }
+            }}
           >
             Checkout
           </button>
