@@ -18,9 +18,9 @@ const Navbar = () => {
     { name: 'Others', link: '/others' },
   ];
   const User = [
-    { name: 'MyOrders', link: '/my-orders' },
-    { name: 'MyAccount', link: '/my-account' },
-    { name: 'SignIn', link: '/sign-in' },
+    { name: 'My Orders', link: '/my-orders' },
+    { name: 'My Account', link: '/my-account' },
+    { name: 'Sign in', link: '/sign-in' },
   ];
   const email = 'laure@mail.com';
 
