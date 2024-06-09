@@ -7,15 +7,12 @@ function SignIn() {
       <div className="flex items-center justify-center relative w-80 mb-4">
         <h1 className="font-medium text-xl">Welcome</h1>
       </div>
-      <div className="flex items-center justify-center p-4">
-        <div className="bg-white p-8 rounded shadow-md w-full max-w-sm border border-gray-200">
+      <div className="flex items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg">
+        <div className="bg-white bg-opacity-50 p-8 shadow-md w-full max-w-sm border border-gray-200">
           <h2 className="text-2xl font-bold mb-6 text-center">Log In</h2>
           <form>
             <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="email"
-              >
+              <label className="block text-sm font-bold mb-2" htmlFor="email">
                 Email:
               </label>
               <input
@@ -27,7 +24,7 @@ function SignIn() {
             </div>
             <div className="mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-sm font-bold mb-2"
                 htmlFor="password"
               >
                 Password:
@@ -42,27 +39,25 @@ function SignIn() {
             <div className="flex flex-col items-center text-center mb-2">
               <Link
                 to="/"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+                className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
               >
                 Sign In
               </Link>
             </div>
           </form>
-          <div className="text-center text-gray-500 text-sm mb-6">
-            <a href="#" className="hover:text-blue-500">
+          <div className="text-center text-sm mb-6">
+            <a href="#" className="hover:text-blue-700">
               Forgot my password
             </a>
           </div>
           <div className="flex flex-col items-center text-center">
             <Link
               to="/sign-up"
-              className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-1/2 mb-2"
+              className="bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-1/2 mb-2"
             >
               Sign Up
             </Link>
-            <span className="text-gray-500 text-sm">
-              Do not you have an account?
-            </span>
+            <span className="text-sm">Do not you have an account?</span>
           </div>
         </div>
       </div>
