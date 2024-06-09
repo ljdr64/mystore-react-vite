@@ -17,10 +17,9 @@ const Navbar = () => {
     { name: 'Jewelery', link: '/jewelery' },
     { name: 'Others', link: '/others' },
   ];
-  const User = [
+  let User = [
     { name: 'My Orders', link: '/my-orders' },
     { name: 'My Account', link: '/my-account' },
-    { name: 'Sign in', link: '/sign-in' },
   ];
   const email = 'laure@mail.com';
 
@@ -46,6 +45,13 @@ const Navbar = () => {
     if (window.innerWidth >= 1024) {
       setIsMenuOpen(false);
     }
+  };
+
+  const handleSignOut = () => {
+    const stringifiedSignOut = JSON.stringify(true);
+    localStorage.setItem('sign-out', stringifiedSignOut);
+    context.setSignOut(true);
+    closeMenu();
   };
 
   useEffect(() => {
@@ -137,6 +143,15 @@ const Navbar = () => {
               </NavLink>
             </li>
           ))}
+          <li className="lg:m-0 mt-5 mb-5 ml-2">
+            <NavLink
+              to="/sign-in"
+              onClick={() => handleSignOut()}
+              className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
+              Sign out
+            </NavLink>
+          </li>
           {!isMenuOpen && (
             <li
               className="flex gap-2 items-center text-lg lg:m-0 mt-5 mb-5 ml-2 cursor-pointer select-none"
