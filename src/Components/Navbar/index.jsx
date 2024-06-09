@@ -10,6 +10,11 @@ const Navbar = () => {
   const context = useContext(ShoppingCartContext);
   const activeStyle = 'underline underline-offset-4';
 
+  // Sign Out
+  const signOut = localStorage.getItem('sign-out');
+  const parsedSignOut = JSON.parse(signOut);
+  const isUserSignOut = context.signOut || parsedSignOut;
+
   const Links = [
     { name: 'All', link: '/' },
     { name: 'Clothes', link: '/clothes' },
@@ -129,20 +134,24 @@ const Navbar = () => {
           ))}
         </ul>
         <ul className="flex flex-col lg:flex-row lg:gap-8 lg:items-center">
-          <li className="lg:m-0 mt-5 mb-5 ml-2">{email}</li>
-          {User.map((link) => (
-            <li className="lg:m-0 mt-5 mb-5 ml-2" key={link.name}>
-              <NavLink
-                to={link.link}
-                onClick={closeMenu}
-                className={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
-              >
-                {link.name}
-              </NavLink>
-            </li>
-          ))}
+          {!isUserSignOut && (
+            <>
+              <li className="lg:m-0 mt-5 mb-5 ml-2">{email}</li>
+              {User.map((link) => (
+                <li className="lg:m-0 mt-5 mb-5 ml-2" key={link.name}>
+                  <NavLink
+                    to={link.link}
+                    onClick={closeMenu}
+                    className={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
+                  >
+                    {link.name}
+                  </NavLink>
+                </li>
+              ))}
+            </>
+          )}
           <li className="lg:m-0 mt-5 mb-5 ml-2">
             <NavLink
               to="/sign-in"
