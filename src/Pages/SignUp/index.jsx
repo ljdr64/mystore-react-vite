@@ -7,7 +7,7 @@ function SignUp() {
       <div className="flex items-center justify-center relative w-80 mb-4">
         <h1 className="font-medium text-xl">Welcome</h1>
       </div>
-      <div className="flex items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg">
+      <div className="flex items-center justify-center w-80 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg">
         <div className="bg-white bg-opacity-50 p-8 rounded-lg shadow-md w-full max-w-sm border border-gray-200">
           <h2 className="text-2xl font-bold mb-6 text-center">
             Create Account

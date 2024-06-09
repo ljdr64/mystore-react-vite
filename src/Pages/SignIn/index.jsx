@@ -7,8 +7,8 @@ function SignIn() {
       <div className="flex items-center justify-center relative w-80 mb-4">
         <h1 className="font-medium text-xl">Welcome</h1>
       </div>
-      <div className="flex items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg">
-        <div className="bg-white bg-opacity-50 p-8 shadow-md w-full max-w-sm border border-gray-200">
+      <div className="flex items-center justify-center w-80 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg">
+        <div className="bg-white bg-opacity-50 p-8 shadow-md w-full max-w-sm border border-gray-200 rounded-lg">
           <h2 className="text-2xl font-bold mb-6 text-center">Log In</h2>
           <form>
             <div className="mb-4">
@@ -53,7 +53,7 @@ function SignIn() {
           <div className="flex flex-col items-center text-center">
             <Link
               to="/sign-up"
-              className="bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-1/2 mb-2"
+              className="bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mb-2"
             >
               Sign Up
             </Link>
