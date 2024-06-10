@@ -1,5 +1,6 @@
-import { useRoutes, BrowserRouter } from 'react-router-dom';
-import { ShoppingCartProvider } from '../../Context';
+import { useContext } from 'react';
+import { useRoutes, BrowserRouter, Navigate } from 'react-router-dom';
+import { ShoppingCartContext, ShoppingCartProvider } from '../../Context';
 import Home from '../Home';
 import MyAccount from '../MyAccount';
 import MyOrder from '../MyOrder';
@@ -12,6 +13,21 @@ import CheckoutSideMenu from '../../Components/CheckoutSideMenu';
 import './App.css';
 
 const AppRoutes = () => {
+  const context = useContext(ShoppingCartContext);
+
+  // Account
+  const account = localStorage.getItem('account');
+  const parsedAccount = JSON.parse(account);
+
+  // Has an account
+  const noAccountInLocalStorage = parsedAccount
+    ? Object.keys(parsedAccount).length === 0
+    : true;
+  const noAccountInLocalState = parsedAccount
+    ? Object.keys(context.account).length === 0
+    : true;
+  const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState;
+
   let routes = useRoutes([
     { path: '/', element: <Home /> },
     { path: '/clothes', element: <Home /> },
@@ -24,7 +40,14 @@ const AppRoutes = () => {
     { path: '/my-orders/last', element: <MyOrder /> },
     { path: '/my-orders/:id', element: <MyOrder /> },
     { path: '/sign-in', element: <SignIn /> },
-    { path: '/sign-up', element: <SignUp /> },
+    {
+      path: '/sign-up',
+      element: !hasUserAnAccount ? (
+        <SignUp />
+      ) : (
+        <Navigate replace to="/sign-in" />
+      ),
+    },
     { path: '/*', element: <NotFound /> },
   ]);
 

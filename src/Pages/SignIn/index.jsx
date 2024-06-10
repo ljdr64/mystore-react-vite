@@ -38,7 +38,6 @@ function SignIn() {
               <label className="block text-sm font-bold mb-2" htmlFor="email">
                 Email:
               </label>
-              <span>{parsedAccount?.email}</span>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="email"
@@ -54,7 +53,6 @@ function SignIn() {
               >
                 Password:
               </label>
-              <span>{parsedAccount?.password}</span>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="password"

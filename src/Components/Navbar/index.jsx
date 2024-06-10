@@ -2,7 +2,6 @@ import { useState, useEffect, useRef, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FcShop } from 'react-icons/fc';
 import { LuAlignJustify } from 'react-icons/lu';
-import { FaShoppingCart } from 'react-icons/fa';
 import { ShoppingCartContext } from '../../Context';
 import ShoppingCart from '../ShoppingCart';
 import './styles.css';
@@ -40,7 +39,6 @@ const Navbar = () => {
     { name: 'My Orders', link: '/my-orders' },
     { name: 'My Account', link: '/my-account' },
   ];
-  const email = 'laure@mail.com';
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
@@ -90,14 +88,14 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`flex items-center fixed z-10 top-0 w-full min-w-[360px] py-2 px-8 text-sm font-light bg-white shadow-md ${
+      className={`flex items-center fixed z-10 top-0 w-full min-w-[360px] py-2 px-8 text-sm font-medium bg-white shadow-md ${
         isMenuOpen && 'z-30'
       }`}
     >
       <div className="lg:hidden justify-between flex items-center w-full lg:w-auto">
         <div className="flex items-center">
           <FcShop size={30} />
-          <NavLink to="/" className="font-semibold text-lg ml-2">
+          <NavLink to="/" className="font-semibold text-lg ml-2 select-none">
             Shopi
           </NavLink>
         </div>
@@ -119,7 +117,10 @@ const Navbar = () => {
           <li className="hidden lg:flex items-center w-full lg:w-auto">
             <div className="flex items-center">
               <FcShop size={30} />
-              <NavLink to="/" className="font-semibold text-lg ml-2">
+              <NavLink
+                to="/"
+                className="font-semibold text-lg ml-2 select-none"
+              >
                 Shopi
               </NavLink>
             </div>
@@ -142,24 +143,21 @@ const Navbar = () => {
           ))}
         </ul>
         <ul className="flex flex-col lg:flex-row lg:gap-8 lg:items-center">
-          {hasUserAnAccount && !isUserSignOut && (
-            <>
-              <li className="lg:m-0 mt-5 mb-5 ml-2">{email}</li>
-              {User.map((link) => (
-                <li className="lg:m-0 mt-5 mb-5 ml-2" key={link.name}>
-                  <NavLink
-                    to={link.link}
-                    onClick={closeMenu}
-                    className={({ isActive }) =>
-                      isActive ? activeStyle : undefined
-                    }
-                  >
-                    {link.name}
-                  </NavLink>
-                </li>
-              ))}
-            </>
-          )}
+          {hasUserAnAccount &&
+            !isUserSignOut &&
+            User.map((link) => (
+              <li className="lg:m-0 mt-5 mb-5 ml-2" key={link.name}>
+                <NavLink
+                  to={link.link}
+                  onClick={closeMenu}
+                  className={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                >
+                  {link.name}
+                </NavLink>
+              </li>
+            ))}
           <li className="lg:m-0 mt-5 mb-5 ml-2">
             <NavLink
               to="/sign-in"

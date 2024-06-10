@@ -2,6 +2,10 @@ import { Link } from 'react-router-dom';
 import Layout from '../../Components/Layout';
 
 function MyAccount() {
+  // Account
+  const account = localStorage.getItem('account');
+  const parsedAccount = JSON.parse(account);
+
   return (
     <Layout>
       <div className="flex items-center justify-center relative w-80 mb-4">
@@ -12,12 +16,12 @@ function MyAccount() {
           <form>
             <div className="mb-4">
               <span className="block text-sm font-bold mb-2" htmlFor="email">
-                Name: <span>Laureano</span>
+                Name: <span>{parsedAccount?.name}</span>
               </span>
             </div>
             <div className="mb-6">
               <span className="block text-sm font-bold mb-2" htmlFor="password">
-                Email: <span>laure@mail.com</span>
+                Email: <span>{parsedAccount?.email}</span>
               </span>
             </div>
             <div className="flex flex-col items-center text-center mb-2">
