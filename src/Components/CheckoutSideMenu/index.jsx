@@ -9,6 +9,24 @@ import './styles.css';
 const ProductDetail = () => {
   const context = useContext(ShoppingCartContext);
 
+  // Sign Out
+  const signOut = localStorage.getItem('sign-out');
+  const parsedSignOut = JSON.parse(signOut);
+  const isUserSignOut = context.signOut || parsedSignOut;
+
+  // Account
+  const account = localStorage.getItem('account');
+  const parsedAccount = JSON.parse(account);
+
+  // Has an account
+  const noAccountInLocalStorage = parsedAccount
+    ? Object.keys(parsedAccount).length === 0
+    : true;
+  const noAccountInLocalState = parsedAccount
+    ? Object.keys(context.account).length === 0
+    : true;
+  const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState;
+
   const handleDelete = (id, quantity) => {
     const filteredProducts = context.cartProducts.filter(
       (product) => product.product.id !== id
@@ -83,18 +101,26 @@ const ProductDetail = () => {
             ${totalPrice(context.cartProducts)}
           </span>
         </p>
-        <Link to="/my-orders/last">
-          <button
-            className="bg-black py-2 text-white rounded-lg w-full"
-            onClick={() => {
-              if (totalPrice(context.cartProducts) > 0) {
-                handleCheckout();
-              }
-            }}
-          >
-            Checkout
-          </button>
-        </Link>
+        {hasUserAnAccount && !isUserSignOut ? (
+          <Link to="/my-orders/last">
+            <button
+              className="bg-black py-2 text-white rounded-lg w-full"
+              onClick={() => {
+                if (totalPrice(context.cartProducts) > 0) {
+                  handleCheckout();
+                }
+              }}
+            >
+              Checkout
+            </button>
+          </Link>
+        ) : (
+          <Link to="/sign-in">
+            <button className="bg-black py-2 text-white rounded-lg w-full">
+              Checkout
+            </button>
+          </Link>
+        )}
       </div>
     </aside>
   );

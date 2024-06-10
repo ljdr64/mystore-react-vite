@@ -15,6 +15,19 @@ const Navbar = () => {
   const parsedSignOut = JSON.parse(signOut);
   const isUserSignOut = context.signOut || parsedSignOut;
 
+  // Account
+  const account = localStorage.getItem('account');
+  const parsedAccount = JSON.parse(account);
+
+  // Has an account
+  const noAccountInLocalStorage = parsedAccount
+    ? Object.keys(parsedAccount).length === 0
+    : true;
+  const noAccountInLocalState = parsedAccount
+    ? Object.keys(context.account).length === 0
+    : true;
+  const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState;
+
   const Links = [
     { name: 'All', link: '/' },
     { name: 'Clothes', link: '/clothes' },
@@ -134,7 +147,7 @@ const Navbar = () => {
           ))}
         </ul>
         <ul className="flex flex-col lg:flex-row lg:gap-8 lg:items-center">
-          {!isUserSignOut && (
+          {hasUserAnAccount && !isUserSignOut && (
             <>
               <li className="lg:m-0 mt-5 mb-5 ml-2">{email}</li>
               {User.map((link) => (
@@ -158,7 +171,7 @@ const Navbar = () => {
               onClick={() => handleSignOut()}
               className={({ isActive }) => (isActive ? activeStyle : undefined)}
             >
-              Sign out
+              {hasUserAnAccount && !isUserSignOut ? 'Sign out' : 'Sign in'}
             </NavLink>
           </li>
           {!isMenuOpen && (
