@@ -1,10 +1,14 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '../../Components/Layout';
 import { ShoppingCartContext } from '../../Context';
 
 function SignIn() {
   const context = useContext(ShoppingCartContext);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   // Account
   const account = localStorage.getItem('account');
@@ -23,6 +27,29 @@ function SignIn() {
     const stringifiedSignOut = JSON.stringify(false);
     localStorage.setItem('sign-out', stringifiedSignOut);
     context.setSignOut(false);
+    handleLogin();
+  };
+
+  const handleLogin = () => {
+    const enteredEmail = email;
+    const enteredPassword = password;
+
+    if (parsedAccount) {
+      console.log(parsedAccount);
+      if (
+        enteredEmail === parsedAccount.email &&
+        enteredPassword === parsedAccount.password
+      ) {
+        console.log('Inicio de sesión exitoso');
+      } else {
+        setErrorMessage('Incorrect email or password.');
+      }
+    } else {
+      setErrorMessage('No hay ninguna cuenta registrada');
+    }
+
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -43,6 +70,7 @@ function SignIn() {
                 id="email"
                 type="text"
                 placeholder="Email"
+                defaultValue={parsedAccount?.email}
                 disabled={!hasUserAnAccount}
               />
             </div>
@@ -58,6 +86,7 @@ function SignIn() {
                 id="password"
                 type="password"
                 placeholder="********"
+                defaultValue={parsedAccount?.password}
                 disabled={!hasUserAnAccount}
               />
             </div>

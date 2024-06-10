@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { FaUserCircle } from 'react-icons/fa';
 import { ShoppingCartContext } from '../../Context';
 import Layout from '../../Components/Layout';
 
@@ -24,17 +25,22 @@ function MyAccount() {
       <div className="flex items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg">
         <div className="bg-white bg-opacity-50 p-8 shadow-md w-80 max-w-sm border border-gray-200 rounded-lg">
           <form>
-            <div className="mb-4">
-              <span className="block text-sm font-bold mb-2" htmlFor="email">
-                Name: <span>{parsedAccount?.name}</span>
+            <div className="flex justify-center mb-4">
+              <FaUserCircle className="w-10 h-10" />
+            </div>
+            <div className="flex flex-col gap-2 mb-2">
+              <span className="text-sm font-bold">Name:</span>
+              <span className="flex gap-2 bg-white  py-2 px-3 rounded text-md font-semibold shadow appearance-none border w-full text-gray-700 leading-tight mb-2">
+                <span>{parsedAccount?.name}</span>
               </span>
             </div>
-            <div className="mb-6">
-              <span className="block text-sm font-bold mb-2" htmlFor="password">
-                Email: <span>{parsedAccount?.email}</span>
+            <div className="flex flex-col gap-2 mb-6">
+              <span className="text-sm font-bold">Email:</span>
+              <span className="flex gap-2 bg-white  py-2 px-3 rounded text-md font-semibold shadow appearance-none border w-full text-gray-700 leading-tight mb-2">
+                <span>{parsedAccount?.email}</span>
               </span>
             </div>
-            <div className="flex flex-col items-center text-center mb-2">
+            <div className="flex flex-col items-center text-center mb-4">
               <Link
                 to="/edit-account"
                 className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
