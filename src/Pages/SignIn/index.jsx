@@ -19,6 +19,12 @@ function SignIn() {
     : true;
   const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState;
 
+  const handleSignIn = () => {
+    const stringifiedSignOut = JSON.stringify(false);
+    localStorage.setItem('sign-out', stringifiedSignOut);
+    context.setSignOut(false);
+  };
+
   return (
     <Layout>
       <div className="flex items-center justify-center relative w-80 mb-4">
@@ -38,6 +44,7 @@ function SignIn() {
                 id="email"
                 type="text"
                 placeholder="Email"
+                disabled={!hasUserAnAccount}
               />
             </div>
             <div className="mb-6">
@@ -53,6 +60,7 @@ function SignIn() {
                 id="password"
                 type="password"
                 placeholder="********"
+                disabled={!hasUserAnAccount}
               />
             </div>
             <Link to="/">
@@ -63,6 +71,7 @@ function SignIn() {
                       ? 'pointer-none bg-gradient-to-r from-gray-200 to-gray-300'
                       : 'text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800'
                   } font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mb-2`}
+                onClick={() => handleSignIn()}
                 disabled={!hasUserAnAccount}
               >
                 Sign In
@@ -71,7 +80,9 @@ function SignIn() {
             <div className="text-center text-sm mb-6">
               <span
                 className={`
-                  ${hasUserAnAccount ? 'hover:text-blue-700' : ''}`}
+                  ${
+                    hasUserAnAccount ? 'hover:text-blue-700 cursor-pointer' : ''
+                  }`}
               >
                 Forgot my password
               </span>
@@ -87,6 +98,7 @@ function SignIn() {
                       ? 'pointer-none bg-gradient-to-r from-gray-200 to-gray-300'
                       : 'text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800'
                   } font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mb-2`}
+                onClick={() => handleSignIn()}
                 disabled={hasUserAnAccount}
               >
                 Sign Up
