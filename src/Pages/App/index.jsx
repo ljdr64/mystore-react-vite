@@ -8,6 +8,7 @@ import MyOrders from '../MyOrders';
 import NotFound from '../NotFound';
 import SignIn from '../SignIn';
 import SignUp from '../SignUp';
+import EditAccount from '../EditAccount';
 import Navbar from '../../Components/Navbar';
 import CheckoutSideMenu from '../../Components/CheckoutSideMenu';
 import './App.css';
@@ -35,6 +36,7 @@ const AppRoutes = () => {
     { path: '/jewelery', element: <Home /> },
     { path: '/others', element: <Home /> },
     { path: '/my-account', element: <MyAccount /> },
+    { path: '/edit-account', element: <EditAccount /> },
     { path: '/my-order', element: <MyOrder /> },
     { path: '/my-orders', element: <MyOrders /> },
     { path: '/my-orders/last', element: <MyOrder /> },
