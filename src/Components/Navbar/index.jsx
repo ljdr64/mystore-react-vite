@@ -4,6 +4,7 @@ import { FcShop } from 'react-icons/fc';
 import { LuAlignJustify } from 'react-icons/lu';
 import { FaShoppingCart } from 'react-icons/fa';
 import { ShoppingCartContext } from '../../Context';
+import ShoppingCart from '../ShoppingCart';
 import './styles.css';
 
 const Navbar = () => {
@@ -105,13 +106,7 @@ const Navbar = () => {
           <button className="lg:hidden text-xl" onClick={toggleMenu}>
             <LuAlignJustify />
           </button>
-          <div
-            className="flex gap-2 items-center text-lg cursor-pointer select-none"
-            onClick={() => context.openCheckoutSideMenu()}
-          >
-            <FaShoppingCart />
-            {context.count}
-          </div>
+          <ShoppingCart />
         </div>
       </div>
       <div
@@ -174,15 +169,7 @@ const Navbar = () => {
               {hasUserAnAccount && !isUserSignOut ? 'Sign out' : 'Sign in'}
             </NavLink>
           </li>
-          {!isMenuOpen && (
-            <li
-              className="flex gap-2 items-center text-lg lg:m-0 mt-5 mb-5 ml-2 cursor-pointer select-none"
-              onClick={() => context.openCheckoutSideMenu()}
-            >
-              <FaShoppingCart />
-              {context.count}
-            </li>
-          )}
+          {!isMenuOpen && <ShoppingCart />}
         </ul>
       </div>
     </nav>
