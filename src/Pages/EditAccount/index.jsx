@@ -38,8 +38,9 @@ function EditAccount() {
     setErrorMessage('');
 
     // Validar el nombre
-    if (!data.name) {
-      setErrorName('Please enter your name');
+    const namePattern = /^[a-zA-Z\s]+$/;
+    if (!data.name || !namePattern.test(data.name)) {
+      setErrorName('Please enter a valid name');
       return;
     }
 
@@ -51,8 +52,8 @@ function EditAccount() {
     }
 
     // Validar la contraseña
-    if (!data.password || data.password.length < 6) {
-      setErrorPassword('Password must be at least 6 characters long');
+    if (!data.password || data.password.length < 5) {
+      setErrorPassword('Password must be at least 5 characters long');
       return;
     }
 

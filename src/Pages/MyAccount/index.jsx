@@ -1,11 +1,14 @@
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import { ShoppingCartContext } from '../../Context';
 import Layout from '../../Components/Layout';
+import Modal from '../../Components/Modal';
 
 function MyAccount() {
   const context = useContext(ShoppingCartContext);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const navigate = useNavigate();
 
   // Account
   const account = localStorage.getItem('account');
@@ -15,6 +18,24 @@ function MyAccount() {
     const stringifiedSignOut = JSON.stringify(true);
     localStorage.setItem('sign-out', stringifiedSignOut);
     context.setSignOut(true);
+  };
+
+  // Delete
+  const handleDeleteClick = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleConfirmDelete = () => {
+    localStorage.removeItem('account');
+    context.setAccount({});
+    localStorage.removeItem('sign-out');
+    context.setSignOut(false);
+    setIsModalVisible(false);
+    navigate('/sign-up');
+  };
+
+  const handleCancelDelete = () => {
+    setIsModalVisible(false);
   };
 
   return (
@@ -53,10 +74,24 @@ function MyAccount() {
             <Link
               to="/sign-in"
               onClick={() => handleSignOut()}
-              className="bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mb-2"
+              className="bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mb-4"
             >
               Log Out
             </Link>
+          </div>
+          <div className="flex flex-col items-center text-center">
+            <button
+              to="/sign-up"
+              onClick={() => handleDeleteClick()}
+              className="bg-gradient-to-r from-red-400 to-red-500 hover:from-red-500 hover:to-red-600 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mb-2"
+            >
+              Delete
+            </button>
+            <Modal
+              isShowing={isModalVisible}
+              hide={handleCancelDelete}
+              confirm={handleConfirmDelete}
+            />
           </div>
         </div>
       </div>
