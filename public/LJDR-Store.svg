@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100" height="100">
+  <!-- Fachada de la tienda -->
+  <rect width="20" height="14" x="2" y="8" fill="#d3d3d3"/> <!-- Pared en gris -->
+   <!-- Techo de la tienda -->
+  <path fill="url(#stripe)" d="M0 10h24l-4-8H4z"/>
+  <!-- Puerta de la tienda -->
+  <rect width="7" height="10" x="12" y="12" fill="#404040"/> <!-- Puerta más grande y marrón -->
+  <!-- Ventana izquierda de la tienda -->
+  <rect width="5" height="5" x="4" y="11.5" fill="#2196f3"/> <!-- Ventana más grande y azul -->
+
+  <!-- Definición del patrón de rayas -->
+  <defs>
+    <pattern id="stripe" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="#ffcc00"/>
+      <rect width="4" height="8" x="4" fill="#a5d6a7"/>
+    </pattern>
+  </defs>
+</svg>

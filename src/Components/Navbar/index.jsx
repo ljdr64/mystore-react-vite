@@ -96,7 +96,7 @@ const Navbar = () => {
         <div className="flex items-center">
           <FcShop size={30} />
           <NavLink to="/" className="font-semibold text-lg ml-2 select-none">
-            Shopi
+            LJDR-Store
           </NavLink>
         </div>
 
@@ -121,7 +121,7 @@ const Navbar = () => {
                 to="/"
                 className="font-semibold text-lg ml-2 select-none"
               >
-                Shopi
+                LJDR-Store
               </NavLink>
             </div>
             <button className="lg:hidden text-xl" onClick={toggleMenu}>
