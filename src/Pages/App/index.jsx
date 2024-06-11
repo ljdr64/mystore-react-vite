@@ -29,18 +29,27 @@ const AppRoutes = () => {
     : true;
   const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState;
 
-  let routes = useRoutes([
-    { path: '/', element: <Home /> },
-    { path: '/clothes', element: <Home /> },
-    { path: '/electronics', element: <Home /> },
-    { path: '/jewelery', element: <Home /> },
-    { path: '/others', element: <Home /> },
+  const privateRoute = (path, element) => ({
+    path: path,
+    element: hasUserAnAccount ? element : <Navigate replace to="/sign-up" />,
+  });
+
+  const privateRoutes = [
     { path: '/my-account', element: <MyAccount /> },
     { path: '/edit-account', element: <EditAccount /> },
     { path: '/my-order', element: <MyOrder /> },
     { path: '/my-orders', element: <MyOrders /> },
     { path: '/my-orders/last', element: <MyOrder /> },
     { path: '/my-orders/:id', element: <MyOrder /> },
+  ];
+
+  let routes = useRoutes([
+    { path: '/', element: <Home /> },
+    { path: '/clothes', element: <Home /> },
+    { path: '/electronics', element: <Home /> },
+    { path: '/jewelery', element: <Home /> },
+    { path: '/others', element: <Home /> },
+    { path: '/*', element: <NotFound /> },
     { path: '/sign-in', element: <SignIn /> },
     {
       path: '/sign-up',
@@ -50,7 +59,7 @@ const AppRoutes = () => {
         <Navigate replace to="/sign-in" />
       ),
     },
-    { path: '/*', element: <NotFound /> },
+    ...privateRoutes.map((route) => privateRoute(route.path, route.element)),
   ]);
 
   return routes;
