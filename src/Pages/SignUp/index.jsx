@@ -12,10 +12,6 @@ function SignUp() {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
-  // Account
-  const account = localStorage.getItem('account');
-  const parsedAccount = JSON.parse(account);
-
   const handleSignIn = () => {
     const stringifiedSignOut = JSON.stringify(false);
     localStorage.setItem('sign-out', stringifiedSignOut);
@@ -30,7 +26,6 @@ function SignUp() {
       name: formData.get('name'),
       email: formData.get('email'),
       password: formData.get('password'),
-      confirmPassword: formData.get('confirm-password'),
     };
 
     setErrorName('');
@@ -58,7 +53,7 @@ function SignUp() {
     }
 
     // Confirmar que las contraseñas coinciden
-    if (data.password !== data.confirmPassword) {
+    if (data.password !== formData.get('confirm-password')) {
       setErrorMessage("Passwords don't match");
       return;
     }
